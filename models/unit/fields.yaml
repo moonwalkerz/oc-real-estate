@@ -1,0 +1,108 @@
+fields:
+    name:
+        label: Nome
+        span: auto
+        type: text
+    slug:
+        label: 'url alias'
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    description:
+        label: Descrizione
+        size: ''
+        span: full
+        type: richeditor
+    published:
+        label: 'Pubblicato?'
+        span: auto
+        type: switch
+    status:
+        label: 'Venduto?'
+        span: auto
+        type: switch
+    images:
+        label: Immagini
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    attachments:
+        label: Allegati
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    contract:
+        label: 'Tipologia contratto'
+        options:
+            sell: Vendita
+            rent: Affitto
+        span: auto
+        type: dropdown
+    surface:
+        label: Superficie
+        span: auto
+        type: text
+    floor:
+        label: Piano
+        span: auto
+        type: text
+    house_type:
+        label: 'Stato Immobile'
+        span: auto
+        type: text
+    heating:
+        label: Riscaldamento
+        span: auto
+        type: text
+    insulation:
+        label: Isolamento
+        span: auto
+        type: text
+    class:
+        label: 'Classe energetica'
+        span: auto
+        type: text
+    price:
+        label: Prezzo
+        span: auto
+        type: text
+    rooms:
+        label: Stanze
+        span: auto
+        type: number
+    section1:
+        label: Indirizzo
+        span: full
+        type: section
+    address:
+        label: Indirizzo
+        span: full
+        type: text
+    zip:
+        label: C.A.P.
+        span: left
+        type: text
+    city:
+        label: Città
+        span: auto
+        type: text
+    state:
+        label: Provincia
+        span: auto
+        default: AO
+        type: text
+    country:
+        label: Nazione
+        span: auto
+        default: Italia
+        type: text

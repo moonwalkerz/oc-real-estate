@@ -1,0 +1,11 @@
+name: Operations
+modelClass: Fiveupmedia\Myhome\Models\Operation
+form: $/fiveupmedia/myhome/models/operation/fields.yaml
+defaultRedirect: fiveupmedia/myhome/operations
+create:
+    redirect: 'fiveupmedia/myhome/operations/update/:id'
+    redirectClose: fiveupmedia/myhome/operations
+update:
+    redirect: fiveupmedia/myhome/operations
+    redirectClose: fiveupmedia/myhome/operations
+preview: {  }

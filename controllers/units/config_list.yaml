@@ -1,0 +1,12 @@
+list: $/fiveupmedia/myhome/models/unit/columns.yaml
+modelClass: Fiveupmedia\Myhome\Models\Unit
+title: Units
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'fiveupmedia/myhome/units/update/:id'

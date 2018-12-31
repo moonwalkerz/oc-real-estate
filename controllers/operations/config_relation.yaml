@@ -1,0 +1,11 @@
+units:
+
+  label: Unità
+
+  view:
+    list: $/fiveupmedia/myhome/models/unit/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/fiveupmedia/myhome/models/unit/fields.yaml
+    recordsPerPage: 10
+    

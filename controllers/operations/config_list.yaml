@@ -1,0 +1,12 @@
+title: Operations
+modelClass: Fiveupmedia\Myhome\Models\Operation
+list: $/fiveupmedia/myhome/models/operation/columns.yaml
+recordUrl: 'fiveupmedia/myhome/operations/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

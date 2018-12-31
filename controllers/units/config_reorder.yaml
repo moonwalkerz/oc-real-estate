@@ -1,0 +1,4 @@
+title: Units
+modelClass: Fiveupmedia\Myhome\Models\Unit
+toolbar:
+    buttons: reorder_toolbar

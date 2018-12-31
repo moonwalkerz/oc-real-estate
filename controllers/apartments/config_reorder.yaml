@@ -1,0 +1,4 @@
+title: Apartments
+modelClass: Fiveupmedia\Myhome\Models\Apartment
+toolbar:
+    buttons: reorder_toolbar

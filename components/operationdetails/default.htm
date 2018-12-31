@@ -1,0 +1,128 @@
+{% set operation = __SELF__.operation %}
+
+
+<!--======= BANNER =========-->
+  <div class="sub-banner">
+    <div class="overlay">
+      <div class="container">
+        <h1>{{ operation.name }}</h1>
+        <ol class="breadcrumb">
+          <li class="pull-left">Dettagli</li>
+          <li><a href="/">Home</a></li>
+          <li class="active">{{ operation.name }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+    
+
+
+  <!--======= PROPERTIES DETAIL PAGE =========-->
+  <section class="properti-detsil">
+    <div class="container">
+      <div class="row"> 
+        
+        <!--======= LEFT BAR =========-->
+        <div class="col-lg-offset-1 col-sm-10"> 
+          
+          <!--======= THUMB SLIDER =========-->
+          <div class="thumb-slider">
+            <div id="slider" class="flexslider">
+              <ul class="slides">
+              	{% for image in operation.images %}
+                <li> <img class="img-responsive" src="{{ image.path|resize(843,454,{ mode: 'crop' }) }}" alt="" > </li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <!--======= THUMBS =========-->
+            <div id="carousel" class="flexslider">
+              <ul class="slides">
+               {% for image in operation.images %}
+              
+                <li> <img class="img-responsive" src="{{ image.path|resize(152,82,{ mode: 'crop' }) }}" alt="" > </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          
+          <!--======= HOME INNER DETAILS =========-->
+    <!--      <ul class="home-in">
+            <li><span><i class="fa fa-home"></i> {{operation.surface }} m<sup>2</sup></span></li>
+            <li><span><img src="{{ 'assets/images/room.svg'|theme }}" class="icon">  {{operation.rooms}}</span></li>
+            <li><span><img src="{{ 'assets/images/leaf.svg'|theme }}" class="icon">  {{operation.class}}</span></li>
+          
+          </ul>
+  -->        
+          <!--======= TITTLE =========-->
+         
+     
+          {{operation.description|raw}}
+          
+
+        
+          <section class="info-property">
+            <h5 class="tittle-head">Indirizzo</h5>
+            <div class="inner"> 
+               <div class="row">
+                  <ul>
+                    <li class="col-sm-4">
+                      <p><span class="font-montserrat">Indirizzo</span>: {{ operation.address }}</p>
+                      <p><span class="font-montserrat">ZIP </span>: {{operation.zip}}</p>
+                    </li>
+                    <li class="col-sm-4">
+                      <p><span class="font-montserrat">Città </span>: {{operation.city}}</p>
+                      <p><span class="font-montserrat">Nazione </span>: {{operation.country}}</p>
+                    </li>
+                    <li class="col-sm-4">
+                      <p><span class="font-montserrat">Provincia </span>: {{operation.state}}</p>
+                      <p><span class="font-montserrat"> </span> </p>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </section>
+
+       </div>
+      </div>
+    </div>
+</section>
+<!--======= PROPERTY =========-->
+  <section class="properties">
+    <div class="container"> 
+      
+
+         {% partial __SELF__ ~ '::unita' %}
+         
+
+    </div>
+  </section>
+          
+ 
+
+{% put scripts %}
+<script>
+$( document ).ready(function() {
+  
+  $('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 138,
+    itemMargin: 0,
+    asNavFor: '#slider'
+  });
+   
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel"
+  });
+});
+
+</script>
+{% endput %}

@@ -1,0 +1,10 @@
+name: Units
+form: $/fiveupmedia/myhome/models/unit/fields.yaml
+modelClass: Fiveupmedia\Myhome\Models\Unit
+defaultRedirect: fiveupmedia/myhome/units
+create:
+    redirect: 'fiveupmedia/myhome/units/update/:id'
+    redirectClose: fiveupmedia/myhome/units
+update:
+    redirect: fiveupmedia/myhome/units
+    redirectClose: fiveupmedia/myhome/units

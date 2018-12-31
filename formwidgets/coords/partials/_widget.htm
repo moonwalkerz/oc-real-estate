@@ -1,0 +1,34 @@
+<div id="<?= $id ?>" class="map" style="height:550px"></div>
+
+<script type="text/javascript" >
+
+
+var map, Marker, markerLocation;
+$(function(){
+    // Now map reference the global map declared in the first line
+    map = L.map('<?= $id ?>').setView([45, 7], 8);
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18,
+    }).addTo(map);
+
+    coord=L.latLng($('input#Form-field-Operation-lat').val(),$('input#Form-field-Operation-lon').val());
+    map.scrollWheelZoom.disable();
+
+    Marker = L.marker(coord).addTo(map);
+
+    newMarkerGroup = new L.LayerGroup();
+    map.on('click', addMarker);
+});
+
+function addMarker(e){
+    // Add marker to map at click location; add popup window
+     if (Marker != undefined) {
+              map.removeLayer(Marker);
+        };
+     Marker = L.marker(e.latlng).addTo(map);
+     $('input#Form-field-Operation-lat').val(e.latlng.lat);
+     $('input#Form-field-Operation-lon').val(e.latlng.lng);
+}
+
+</script>

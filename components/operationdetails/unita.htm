@@ -1,0 +1,81 @@
+{% set units = __SELF__.units %}
+
+
+
+<ul class="row">
+
+
+    {% for unit in units %}
+
+    {% if unit.status %}
+    {% set blur = 'blur' %}
+    {% else %}
+    {% set blur = '' %}
+    {% endif%}
+
+    <li class="col-sm-4">
+
+        {% if "sell" in unit.contract %}
+        <span class="tag font-montserrat sale">Vendita</span>
+        {% endif %}
+        {% if "rent" in unit.contract %}
+        <span class="tag font-montserrat rent">Affitto</span>
+        {% endif %}
+        <section><img <!--=======IMAGE=========-->
+            <div class="img">
+
+                <img class="img-responsive {{blur}}" src="{{ unit.images.first.path|resize(370,230,{ mode: 'crop'}) }}"
+                    alt="">
+
+                {% if unit.status %}
+                <div class="sold"><img class="img-responsive" src=" {{'assets/images/venduto.svg'|theme }}" width="640" height="460" /></div>
+                {% endif%}
+                <!--======= IMAGE HOVER =========-->
+
+                {% if not unit.status %}
+                <div class="over-proper"> <a href="{{ unit.complexurl }}" class="btn font-montserrat">+ info</a> </div>
+                {% endif%}
+            </div>
+            <!--======= HOME INNER DETAILS =========-->
+            <ul class="home-in">
+                <li><span><i class="fa fa-home"></i> {{ unit.surface }} m<sup>2</sup></span></li>
+                <li><span><img src="{{ 'assets/images/room.svg'|theme }}" class="icon"> {{unit.rooms}}</span></li>
+                <li><span><img src="{{ 'assets/images/leaf.svg'|theme }}" class="icon"> {{unit.class}}</span></li>
+            </ul>
+            <!--======= HOME DETAILS =========-->
+            <div class="detail-sec">
+
+                {% if unit.status %}
+                {{ unit.name }}
+                {% else %}
+                <a href="{{ unit.complexurl }}" class="font-montserrat">{{ unit.name }}</a>
+
+
+                {% endif %}
+
+
+                <div class="line price font-montserrat">
+                    {% if (unit.price > 0) %}
+                    {{unit.price|number_format(2, ',', '.')}}€
+                    {% else %}
+
+                    {% if unit.status %}
+                    Venduto
+                    {% else %}
+                    <a href="mailto:info@myhomezani.it?subject={{operation.name}} - {{ unit.name }}">Contattaci</a>
+                    {% endif %}
+
+
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+        </section>
+    </li>
+
+
+    {% endfor %}
+
+
+
+</ul>

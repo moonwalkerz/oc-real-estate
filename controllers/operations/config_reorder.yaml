@@ -1,0 +1,5 @@
+title: Operations
+modelClass: Fiveupmedia\Myhome\Models\Operation
+nameFrom: order
+toolbar:
+    buttons: reorder_toolbar

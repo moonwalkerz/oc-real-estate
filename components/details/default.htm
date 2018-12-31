@@ -1,0 +1,146 @@
+{% set unit = __SELF__.unit %}
+
+
+<!--======= BANNER =========-->
+  <div class="sub-banner">
+    <div class="overlay">
+      <div class="container">
+        <h1>{{ unit.name }}</h1>
+        <ol class="breadcrumb">
+          <li class="pull-left">Dettagli</li>
+          <li><a href="/">Home</a></li>
+         {% if operation.name %}  <li ><a href="/complesso/{{ operation.slug }}">{{ operation.name }}</a></li>{% endif %}
+          <li class="active">{{ unit.name }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+  <!--======= PROPERTIES DETAIL PAGE =========-->
+  <section class="properti-detsil">
+    <div class="container">
+      <div class="row"> 
+        
+        <!--======= LEFT BAR =========-->
+        <div class="col-lg-offset-1 col-sm-10"> 
+          
+          <!--======= THUMB SLIDER =========-->
+          <div class="thumb-slider">
+            <div id="slider" class="flexslider">
+              <ul class="slides">
+              	{% for image in unit.images %}
+                <li> <img class="img-responsive" src="{{ image.path|resize(843,454,{ mode: 'crop' }) }}" alt="" > </li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <!--======= THUMBS =========-->
+            <div id="carousel" class="flexslider">
+              <ul class="slides">
+               {% for image in unit.images %}
+                <li> <img class="img-responsive" src="{{ image.path|resize(152,82,{ mode: 'crop' }) }}" alt="" > </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          
+          <!--======= HOME INNER DETAILS =========-->
+          <ul class="home-in">
+            <li><span><i class="fa fa-home"></i> {{unit.surface }} m<sup>2</sup></span></li>
+            <li><span><img src="{{ 'assets/images/room.svg'|theme }}" class="icon">  {{unit.rooms}}</span></li>
+            <li><span><img src="{{ 'assets/images/leaf.svg'|theme }}" class="icon">  {{unit.class}}</span></li>
+     <!--       <li><span><i class="fa fa-print"></i> Stampa</span></li> -->
+          </ul>
+          
+          <!--======= TITTLE =========-->
+         
+          <section>
+  			{% if "sell" in unit.contract %}
+			<span class="sale-tag font-montserrat">Vendita</span>
+			{% endif %}
+			{% if "rent" in unit.contract %}
+			<span class="sale-tag font-montserrat">Affitto</span>
+			{% endif %}
+          
+          <span class="sale-tag price font-montserrat"> 
+          {% if (unit.price > 0) %}
+          {{unit.price|number_format(2, ',', '.')}}€
+          {% else %}
+          <a href="mailto:info@myhomezani.it?subject={{unit.name}}">Contattaci</a>
+          {% endif %}
+          </span> </section>
+          {{unit.description|raw}}
+          
+         
+      
+                 <section class="info-property">
+            <h5 class="tittle-head">Caratteristiche</h5>
+            <div class="inner"> 
+
+            	<table class="table">
+            		<tr>
+            			<td><p><span class="font-montserrat">Stanze </span>: {{unit.rooms}}</p></td>
+            			<td><p><span class="font-montserrat">Riscaldamento </span>: {{unit.heating}}</p></td>
+            			<td><p><span class="font-montserrat">Piano</span>: {{ unit.floor }}</p></td>
+            		</tr>
+            		<tr>
+            			<td><p><span class="font-montserrat">Superficie </span>: {{unit.surface}} m<sup>2</sup></p></td>
+            			<td><p><span class="font-montserrat">Isolamento </span>: {{unit.insulation}}</p></td>
+            			<td><p><span class="font-montserrat">Stato immobile </span>: {{unit.house_type}}</p></td>
+            		</tr>
+            		<tr>
+            			<td><p><span class="font-montserrat">Prezzo</span>: {{unit.price|number_format(2, ',', '.')}}€</p></td>
+            			<td><p><span class="font-montserrat">Classe </span>: {{unit.class}}</p></td>
+            			<td><p><span class="font-montserrat">Tipo di contratto </span>: 
+            			{% if 'sell' in unit.contract %}
+            			Vendita
+            			{% endif %}
+            			{% if 'rent' in unit.contract %}
+            			Affitto
+            			{% endif %}
+
+            		</p></td>
+            		</tr>
+            	</table>
+              
+              </div>
+            </div>
+          </section>
+          
+         
+         
+          
+         
+        </div>
+        
+
+      </div>
+    </div>
+
+
+{% put scripts %}
+<script>
+$( document ).ready(function() {
+  
+  $('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 138,
+    itemMargin: 0,
+    asNavFor: '#slider'
+  });
+   
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel"
+  });
+});
+
+</script>
+{% endput %}

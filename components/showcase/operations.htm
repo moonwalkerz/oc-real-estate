@@ -1,0 +1,26 @@
+     {% set operations = __SELF__.operations %}
+
+
+      <ul class="row">
+        
+
+        {% for operation in operations %}
+
+        <li class="col-sm-3">
+          <section> 
+            <!--======= SERVICE IMG =========--> 
+            <img style="width:100%;height:auto;" src="{{ operation.images.first.path|resize(740,750,{ mode: 'crop'}) }}" alt="" >
+           
+            
+            <!--======= SERVICE HOVER =========-->
+            <div class="ser-hover">
+              <p><br/><br/>
+              <div class="text-center"> <a href="{{ operation.url }}" class="btn font-montserrat">+ info</a> </div>
+             
+            </div>
+            <a href="{{ operation.url }}" class="heading">{{ operation.name }}</a>
+            </section>
+        </li>
+        {% endfor %}
+      </ul>
+      

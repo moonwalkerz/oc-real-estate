@@ -1,0 +1,87 @@
+fields:
+    name:
+        label: Nome
+        span: auto
+        type: text
+    slug:
+        label: 'url alias'
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    description:
+        label: Descrizione
+        size: ''
+        span: full
+        type: richeditor
+    address:
+        label: Indirizzo
+        span: auto
+        type: text
+    city:
+        label: Città
+        span: auto
+        type: text
+    state:
+        label: Provincia
+        span: auto
+        type: text
+    zip:
+        label: C.A.P.
+        span: auto
+        type: text
+    country:
+        label: Nazione
+        span: auto
+        type: text
+    attachments:
+        label: Allegati
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    frontpage:
+        label: 'Mosta in Homepage?'
+        span: auto
+        type: switch
+    published:
+        label: 'Pubblicato?'
+        span: auto
+        type: switch
+    images:
+        label: Immagini
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    videos:
+        label: Video
+        mode: file
+        fileTypes: '.mp4,.3gp'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    map:
+        label: Mappa
+        span: full
+        type: coords
+        latfield: lat
+        lonfield: lon
+    lat:
+        label: Lat
+        span: auto
+        type: text
+    lon:
+        label: Lon
+        span: auto
+        type: text

@@ -1,0 +1,10 @@
+name: Apartments
+form: $/fiveupmedia/myhome/models/apartment/fields.yaml
+modelClass: Fiveupmedia\Myhome\Models\Apartment
+defaultRedirect: fiveupmedia/myhome/apartments
+create:
+    redirect: 'fiveupmedia/myhome/apartments/update/:id'
+    redirectClose: fiveupmedia/myhome/apartments
+update:
+    redirect: fiveupmedia/myhome/apartments
+    redirectClose: fiveupmedia/myhome/apartments

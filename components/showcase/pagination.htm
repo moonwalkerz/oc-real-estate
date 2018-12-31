@@ -1,0 +1,23 @@
+{% if __SELF__.pagination %}
+{% set articles = __SELF__.articles %}
+{% if articles.lastPage > 1 %}
+
+<div class="pagination-wrapper">
+    <ul class="pagination">
+        {% if articles.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (articles.currentPage-1) }) }}">&larr;</a></li>
+        {% endif %}
+
+        {% for article in 1..articles.lastPage %}
+            <li class="{{ articles.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if articles.lastPage > articles.currentPage %}
+            <li ><a href="{{ this.page.baseFileName|page({ (pageParam): (articles.currentPage+1) }) }}">&rarr;</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+{% endif %}
