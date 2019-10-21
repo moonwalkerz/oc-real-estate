@@ -1,0 +1,12 @@
+columns:
+    name:
+        label: Nome
+        type: text
+        searchable: true
+    id:
+        clickable: 'false'
+        searchable: false
+        sortable: false
+        label: Azioni
+        type: partial
+        path: ~/plugins/fiveupmedia/myhome/models/unit/_buttons.htm

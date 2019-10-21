@@ -24,4 +24,9 @@ class Apartment extends Model
      */
     public $rules = [
     ];
+    
+    public $attachMany = [
+        'images' => 'System\Models\File',
+        'attachments' => 'System\Models\File'
+        ];
 }

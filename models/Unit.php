@@ -1,7 +1,7 @@
 <?php namespace Fiveupmedia\Myhome\Models;
 
 use Model;
-
+use Log;
 /**
  * Model
  */
@@ -57,10 +57,19 @@ class Unit extends Model
         ];
     }
 
+    public function scopeIsPublished($query)
+    {
+         return $query->where('published','!=','true');
+    }
+
+    public function scopeIsFrontPage($query)
+    {
+         return $query->where('frontpage','!=','true');
+    }
 
     public function scopeNotOperation($query)
     {
-         return $query->whereNull('operation_id');
+         return $query->whereNull('operation_id')->orWhere('operation_id','=','0');
     }
 
       /**
@@ -75,10 +84,23 @@ class Unit extends Model
          */
         extract(array_merge([
             'page'       => 1,
+            'number'       => 0,
             'perPage'    => 30,
             'sort'       => 'created_at',
             'search'     => '',
+            'notOperation' => false,
+            'frontPageOnly' => false
         ], $options));
+
+        $query->isPublished();
+
+        if ($notOperation) {
+            $query->notOperation();
+        }
+
+        if ($frontPageOnly) {
+            $query->isFrontPage();
+        }
 
         $searchableFields = ['title'];
         /*
@@ -103,7 +125,6 @@ class Unit extends Model
             }
         }
 
-
         /*
          * Search
          */
@@ -111,6 +132,11 @@ class Unit extends Model
         if (strlen($search)) {
             $query->searchWhere($search, $searchableFields);
         }
+        if ($number>0) {
+            return $query->take($number)->get();
+        }
+
+
 
         return $query->paginate($perPage, $page);
     }

@@ -72,7 +72,7 @@ class OperationDetails extends ComponentBase
 
         $units->each(function($unit)
         {
-            Log::info('zio garu /complesso/'.$this->complesso.'/'.$unit->slug);
+         //   Log::info('zio garu /complesso/'.$this->complesso.'/'.$unit->slug);
             $unit->setComplexUrl($this->complesso, $unit->slug, $this->controller);
         });
     //    dd($this->units);

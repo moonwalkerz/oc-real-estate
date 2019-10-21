@@ -6,19 +6,15 @@ plugin:
     homepage: ''
 navigation:
     main-menu-item:
-        label: 'fiveupmedia.myhome::lang.plugin.name'
+        label: MyHome
         url: fiveupmedia/myhome/operations
         icon: icon-home
         sideMenu:
-            side-menu-item:
-                label: Appartamenti
-                url: fiveupmedia/myhome/apartments
-                icon: icon-list
             side-menu-item2:
                 label: Operazioni
                 url: fiveupmedia/myhome/operations
                 icon: icon-list
             side-menu-item3:
-                label: Unità
+                label: Opportunità
                 url: fiveupmedia/myhome/units
                 icon: icon-list

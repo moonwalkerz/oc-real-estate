@@ -47,7 +47,10 @@ class Operation extends Model
             'sort_order desc' => 'Ordinamento',
             'random' => 'Random'
         ];
-
+    public function scopeIsFrontPage($query, $options)
+    {
+        return $query->where('frontpage','=','true');
+    }
      /**
      * Lists posts for the front end
      * @param  array $options Display options
@@ -66,10 +69,15 @@ class Operation extends Model
             'published'  => true,
             'exceptPost' => null,
             'singleReview' => null,
+            'frontPageOnly' => null,
         ], $options));
 
         $searchableFields = ['name'];
 
+
+        if ($frontPageOnly) {
+            $query->isFrontPage();
+        }
      
         /*
          * Sorting
@@ -77,6 +85,7 @@ class Operation extends Model
         if (!is_array($sort)) {
             $sort = [$sort];
         }
+
 
         foreach ($sort as $_sort) {
 

@@ -5,9 +5,13 @@ columns:
         searchable: true
     published:
         label: 'Pubblicata?'
-        type: partial
-        path: ~/plugins/fiveupmedia/myhome/models/unit/_published.htm
+        type: inetis-list-switch
+        icon: true
     status:
         label: 'Venduta?'
-        type: partial
-        path: ~/plugins/fiveupmedia/myhome/models/unit/_status.htm
+        type: inetis-list-switch
+        icon: true
+    frontpage:
+        label: 'Prima pagina?'
+        type: inetis-list-switch
+        icon: true

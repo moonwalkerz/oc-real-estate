@@ -7,7 +7,8 @@ use FiveUpMedia\Myhome\Models\Unit;
 class Grid extends ComponentBase
 {
     public $units;
-
+    public $number = 0;
+    public $frontPageOnly = false;
 
     public function componentDetails()
     {
@@ -27,7 +28,18 @@ class Grid extends ComponentBase
                 'default'      => 'Opportunità',
                 'showExternalParam' => false
             ],
-           
+            'number' => [
+                'title'        => 'Numero',
+                'description'  => 'Numero di elementi, 0 tutti',
+                'type'         => 'string',
+                'default'      => '0',
+            ],
+            'frontPageOnly' => [
+                'title'        => 'Front Page only',
+                'description'  => 'Mostra solo ciò che è marcato come frontpage',
+                'type'         => 'checkbox',
+                'default'      => '0',
+            ],
             'noUnitsMessage' => [
                 'title'        => 'Nessuna Unità',
                 'description'  => 'Messaggio in caso di nessuna unità',
@@ -74,9 +86,14 @@ class Grid extends ComponentBase
    public function onRun()
     {
         $this->prepareVars();
-
-        $this->units = $this->page['units'] = Unit::orderBy('name')->notOperation()->get();
-
+        /*
+        if ($this->number>0) {
+            $this->units = $this->page['units'] = Unit::orderBy('name')->isPublished()->notOperation()->take($this->number)->get();
+        } else {
+            $this->units = $this->page['units'] = Unit::orderBy('name')->isPublished()->notOperation()->get();
+        }
+*/
+        $this->units= $this->page['units']=$this->listUnits();
 
     }
 
@@ -89,20 +106,25 @@ class Grid extends ComponentBase
          * Page links
          */
         $this->unitPage = $this->page['unitPage'] = $this->property('unitPage');
-
+        $this->number=$this->page['number'] = $this->property('number');
+        $this->fontPageOnly=$this->page['frontPageOnly'] = $this->property('frontPageOnly');
       
     }
 
-    protected function listOperations()
+    protected function listUnits()
     {
      
 
-        $offers = Unit::listFrontPage([
-            'sort'       => $this->property('sortOrder')
+        $units = Unit::listFrontEnd([
+            'sort'       => $this->property('sortOrder'),
+            'frontPageOnly' =>  $this->property('frontPageOnly'),
+            'sort' => $this->property('sortOrder'),
+            'number'=> $this->property('number'),
+            'notOperation' => true
         ]);
 
         
-        return $offers;
+        return $units;
     }
 
 

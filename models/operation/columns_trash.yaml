@@ -1,0 +1,13 @@
+columns:
+    name:
+        label: Operazioni
+        type: text
+        searchable: true
+        sortable: true
+    id:
+        clickable: 'false'
+        searchable: false
+        sortable: false
+        label: Azioni
+        type: partial
+        path: ~/plugins/fiveupmedia/myhome/models/operation/_buttons.htm

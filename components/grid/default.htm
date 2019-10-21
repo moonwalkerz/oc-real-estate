@@ -1,9 +1,9 @@
 {% set units = __SELF__.units %}
-<ul class="row">
+<ul class="grid">
 
 
         {% for unit in units %}
-	<li class="col-sm-4"> 
+	<li > 
 
 		{% if "sell" in unit.contract %}
 		<span class="tag font-montserrat sale">Vendita</span>
@@ -13,24 +13,33 @@
 		{% endif %}
 		<section> 
 			<!--======= IMAGE =========-->
-			<div class="img"> <img style="width:100%;max-width:noneM" src="{{ unit.images.first.path|resize(740,460,{ mode: 'crop'}) }}" alt="" > 
+			<div class="img"> <img style="width:100%;max-width:noneM" src="{{ unit.images.first.path|resize(740,460,{ mode: 'crop'}) }}" alt="{{unit.name}}" > 
 				<!--======= IMAGE HOVER =========-->
 
-				<div class="over-proper"> <a href="/unita/{{unit.slug}}" class="btn font-montserrat">+ info</a> </div>
+				{% if unit.status %}
+					{% if "sell" in unit.contract %}
+					<div class="sold"><img class="img-responsive" src=" {{'assets/images/venduto.svg'|theme }}" width="640" height="460" style="margin-top:25%" alt="venduto"/></div>
+					{% endif %}
+					{% if "rent" in unit.contract %}
+					<div class="sold"><img class="img-responsive" src=" {{'assets/images/affittato.svg'|theme }}" width="640" height="460" style="margin-top:25%" alt="affittato"/></div>
+					{% endif %}
+                {% else%}
+					<div class="over-proper"> <a title="{{unit.name}}"href="/unita/{{unit.slug}}" class="btn font-montserrat">+ info</a> </div>
+				{% endif%}
 			</div>
 			<!--======= HOME INNER DETAILS =========-->
 			<ul class="home-in">
 				<li><span><i class="fa fa-home"></i> {{ unit.surface }} m<sup>2</sup></span></li>
-				<li><span><img src="{{ 'assets/images/room.svg'|theme }}" class="icon">  {{unit.rooms}}</span></li>
-				<li><span><img src="{{ 'assets/images/leaf.svg'|theme }}" class="icon">  {{unit.class}}</span></li>
+				<li><span><img src="{{ 'assets/images/room.svg'|theme }}" class="icon" alt="camera">  {{unit.rooms}}</span></li>
+				<li><span><img src="{{ 'assets/images/leaf.svg'|theme }}" class="icon" alt="foglia">  {{unit.class}}</span></li>
 			</ul>
 			<!--======= HOME DETAILS =========-->
-			<div class="detail-sec"> <a href="/unita/{{unit.slug}}" class="font-montserrat">{{ unit.name }}</a> <span class="locate"><i class="fa fa-map-marker"></i> {{ unit.city }}</span>
+			<div class="detail-sec"> <a title="{{unit.name}}" href="/unita/{{unit.slug}}" class="font-montserrat">{{ unit.name }}</a> <span class="locate"><i class="fa fa-map-marker"></i> {{ unit.city }}</span>
 				<p>{{ unit.address }} <br>{{ unit.zip }}  {{ unit.city }} ({{ unit.state }})</p>
 				<div class="share-p"> <span class="price font-montserrat"> {% if (unit.price > 0) %}
           {{unit.price|number_format(2, ',', '.')}}€
           {% else %}
-          <a href="mailto:info@myhomezani.it?subject={{ unit.name }}">Contattaci</a>
+          <a href="mailto:info@myhomezani.com?subject={{ unit.name }}">Contattaci</a>
           {% endif %}
           </span>  </div>
 			</div>

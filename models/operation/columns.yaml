@@ -4,3 +4,11 @@ columns:
         type: text
         searchable: true
         sortable: true
+    published:
+        label: 'Pubblicata?'
+        type: inetis-list-switch
+        icon: true
+    frontpage:
+        label: 'Prima pagina?'
+        type: inetis-list-switch
+        icon: true

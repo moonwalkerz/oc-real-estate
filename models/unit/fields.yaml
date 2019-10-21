@@ -20,8 +20,12 @@ fields:
         span: auto
         type: switch
     status:
-        label: 'Venduto?'
+        label: 'Venduto/Affittato?'
         span: auto
+        type: switch
+    frontpage:
+        label: 'Mostra in homepage?'
+        span: full
         type: switch
     images:
         label: Immagini
@@ -51,6 +55,7 @@ fields:
     surface:
         label: Superficie
         span: auto
+        default: '0'
         type: text
     floor:
         label: Piano
@@ -75,11 +80,17 @@ fields:
     price:
         label: Prezzo
         span: auto
+        default: '0'
         type: text
     rooms:
         label: Stanze
         span: auto
         type: number
+    matterport_id:
+        label: 'Visita virtuale'
+        span: auto
+        type: text
+        comment: 'codice matterport'
     section1:
         label: Indirizzo
         span: full

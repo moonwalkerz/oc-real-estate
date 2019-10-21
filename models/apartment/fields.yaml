@@ -32,7 +32,7 @@ fields:
         span: auto
         type: text
     home:
-        label: 'Mosta in Homepage?'
+        label: 'Mostra in Homepage?'
         span: auto
         type: switch
     published:
@@ -65,3 +65,8 @@ fields:
         label: Stanze
         span: auto
         type: number
+    matterport_id:
+        label: 'Visita virtuale'
+        span: auto
+        type: text
+        comment: 'codice matterport'

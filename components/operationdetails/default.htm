@@ -1,5 +1,19 @@
 {% set operation = __SELF__.operation %}
 
+{% put styles %}
+
+<meta property="og:url"                content="{{  url_current() }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ operation.name }}" />
+<meta property="og:description"        content="{{ html_strip(html_limit(operation.description,100)) }}" />
+
+<meta property="og:image" content="{{ image.path }}" />
+<meta property="og:image:url" content="{{ image.path }}" />
+<meta property="og:image:secure_url" content="{{ image.path }}" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta name="description" content="{{ html_strip(html_limit(operation.description,100)) }}">
+
+{% endput %}
 
 <!--======= BANNER =========-->
   <div class="sub-banner">
@@ -83,6 +97,8 @@
               </div>
             </div>
           </section>
+
+
 
        </div>
       </div>
