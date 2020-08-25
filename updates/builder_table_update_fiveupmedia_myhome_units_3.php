@@ -11,7 +11,7 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits3 extends Migration
         {
             $table->string('type')->nullable();
             $table->string('contract')->nullable();
-            $table->decimal('surface', 6, 2)->nullable();
+            $table->decimal('surface', 12, 2)->default(0);
             $table->string('floor')->nullable();
             $table->string('house_type')->nullable();
             $table->string('heating')->nullable();

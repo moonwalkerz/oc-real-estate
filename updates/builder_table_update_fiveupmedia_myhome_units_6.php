@@ -10,7 +10,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits6 extends Migration
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
             $table->string('city');
-            $table->decimal('price', 12, 2)->change();
         });
     }
     
@@ -19,7 +18,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits6 extends Migration
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
             $table->dropColumn('city');
-            $table->decimal('price', 6, 2)->change();
         });
     }
 }

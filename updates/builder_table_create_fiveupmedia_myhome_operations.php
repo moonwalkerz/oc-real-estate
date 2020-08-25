@@ -20,10 +20,11 @@ class BuilderTableCreateFiveupmediaMyhomeOperations extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
+            $table->text('zip')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->text('zip')->nullable();
+
         });
     }
     

@@ -16,7 +16,7 @@ class BuilderTableCreateFiveupmediaMyhomeUnits extends Migration
             $table->text('description')->nullable();
             $table->string('address')->nullable();
             $table->string('state')->nullable();
-            $table->string('contry')->nullable();
+            $table->string('country')->nullable();
             $table->boolean('zip')->nullable();
             $table->text('lat')->nullable();
             $table->text('lon')->nullable();

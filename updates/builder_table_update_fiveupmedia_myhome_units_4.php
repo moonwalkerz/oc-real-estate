@@ -9,7 +9,7 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits4 extends Migration
     {
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
-            $table->decimal('price', 6, 2)->nullable();
+            $table->decimal('price', 12, 2)->default(0);
             $table->integer('rooms')->nullable();
         });
     }

@@ -9,7 +9,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits5 extends Migration
     {
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
-            $table->renameColumn('contry', 'country');
         });
     }
     
@@ -17,7 +16,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits5 extends Migration
     {
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
-            $table->renameColumn('country', 'contry');
         });
     }
 }

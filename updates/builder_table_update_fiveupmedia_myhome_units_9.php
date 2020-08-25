@@ -10,7 +10,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits9 extends Migration
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
             $table->string('zip')->change();
-            $table->decimal('surface', 12, 2)->change();
         });
     }
     
@@ -19,7 +18,7 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits9 extends Migration
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
             $table->string('zip', 191)->change();
-            $table->decimal('surface', 6, 2)->change();
+            
         });
     }
 }

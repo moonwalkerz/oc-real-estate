@@ -9,7 +9,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits8 extends Migration
     {
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
-            $table->string('zip')->nullable()->unsigned(false)->default(null)->change();
         });
     }
     
@@ -17,7 +16,6 @@ class BuilderTableUpdateFiveupmediaMyhomeUnits8 extends Migration
     {
         Schema::table('fiveupmedia_myhome_units', function($table)
         {
-            $table->boolean('zip')->nullable()->unsigned(false)->default(null)->change();
         });
     }
 }
